@@ -1,2 +1,2 @@
-# currency-conversion
+# Currency conversion web app
 Test assignment
