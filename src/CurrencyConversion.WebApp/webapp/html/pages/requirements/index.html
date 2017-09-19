@@ -1,0 +1,25 @@
+﻿<h3>Currency Conversion Business Requirements</h3>
+
+<ol>
+    <li>Accessible in a web browser</li>
+    <li>User interface musts
+        <ul>
+            <li>accept money amount and currency type to convert from</li>
+            <li>accept currency type to convert to</li>
+            <li>invoke the conversion</li>
+            <li>display the converted money amount</li>
+            <li>notify the user nicely if something went wrong</li>
+        </ul>
+    </li>
+    <li>Exchange rates will be delivered daily to the app with the following exchange rates data
+        <ul>
+            <li>currency from</li>
+            <li>currency to</li>
+            <li>exchange rate</li>
+            <li>date</li>
+        </ul>
+    </li>
+    <li>Exchange rates will be stored in a local database</li>
+    <li>Exchange rates feed is known to not deliver rates on a given day. Notify the end user of the date of the rate used</li>
+    <li>Currency types may become invalid and the app will need to handle this rare situation (i.e. European Union breaks up and each country reverts back to their own currency)</li>
+</ol>
