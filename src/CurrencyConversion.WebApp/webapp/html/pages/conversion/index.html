@@ -1,1 +1,49 @@
-﻿Conversion
+﻿<h3>Currency Conversion</h3>
+
+<form name="convertForm" class="form-horizontal well" novalidate
+      ng-submit="convertForm.$valid && conversion.convert()">
+    
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Money amount</label>
+        <div class="col-sm-10">
+            <input class="form-control" type="number" placeholder="Money amount to convert from" required
+                   ng-model="conversion.moneyAmount">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Currency from</label>
+        <div class="col-sm-10">
+            <select class="form-control" required
+                    ng-model="conversion.selectedCurrencyFrom"
+                    ng-options="item as item.name for item in conversion.currencies"></select>
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="button" class="btn btn-default"
+                    ng-click="conversion.swapCurrencies()">
+                <span class="glyphicon glyphicon-resize-vertical"></span>
+            </button>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Currency to</label>
+        <div class="col-sm-10">
+            <select class="form-control" required
+                    ng-model="conversion.selectedCurrencyTo"
+                    ng-options="item as item.name for item in conversion.currencies"></select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-primary"
+                    ng-disabled="convertForm.$invalid">Convert</button>
+        </div>
+    </div>
+</form>
+
+<converted ng-show="conversion.converted"></converted>

@@ -152,6 +152,9 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\CurrencyController.cs" />
+    <Compile Include="Dto\ExchangeRateDto.cs" />
+    <Compile Include="Dto\CurrencyDto.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -172,10 +175,14 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="webapp\css\main.css" />
+    <Content Include="webapp\html\pages\conversion\converted.html" />
     <Content Include="webapp\html\pages\requirements\index.html" />
     <Content Include="webapp\html\pages\contact\index.html" />
     <Content Include="webapp\html\pages\conversion\index.html" />
-    <Content Include="webapp\app.js" />
+    <Content Include="webapp\js\app.js" />
+    <Content Include="webapp\js\controllers\conversion\controller.js" />
+    <Content Include="webapp\js\controllers\conversion\directives.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -203,9 +210,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
-    <Folder Include="webapp\css\" />
-    <Folder Include="webapp\js\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

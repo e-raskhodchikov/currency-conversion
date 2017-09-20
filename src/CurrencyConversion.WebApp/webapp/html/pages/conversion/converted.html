@@ -1,0 +1,5 @@
+﻿<div class="panel panel-default">
+    <div class="panel-body">
+        {{conversion.converted.moneyAmount | number: 2}} {{conversion.converted.currencyFrom.name}} = {{conversion.converted.moneyAmount * conversion.converted.exchangeRate | number: 2}} {{conversion.converted.currencyTo.name}}
+    </div>
+</div>

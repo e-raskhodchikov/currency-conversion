@@ -7,6 +7,7 @@
 
         @Styles.Render("~/Content/css")
         @Scripts.Render("~/bundles/modernizr")
+        <link type="text/css" rel="stylesheet" href="/webapp/css/main.css"/>
     </head>
     <body>
         @RenderBody()
@@ -17,7 +18,8 @@
 
         @RenderSection("scripts", required: false)
         
-        <script type="text/javascript" src="/webapp/app.js"></script>
-        <script type="text/javascript" src="/webapp/routes.js"></script>
+        <script type="text/javascript" src="/webapp/js/app.js"></script>
+        <script type="text/javascript" src="/webapp/js/controllers/conversion/controller.js"></script>
+        <script type="text/javascript" src="/webapp/js/controllers/conversion/directives.js"></script>
     </body>
 </html>

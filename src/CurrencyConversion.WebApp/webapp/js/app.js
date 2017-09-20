@@ -5,7 +5,9 @@
         .config(function($routeProvider) {
             $routeProvider
                 .when('/', {
-                    templateUrl: '/webapp/html/pages/conversion/index.html'
+                    templateUrl: '/webapp/html/pages/conversion/index.html',
+                    controller: 'ConversionController',
+                    controllerAs: 'conversion'
                 })
                 .when('/requirements', {
                     templateUrl: '/webapp/html/pages/requirements/index.html'
