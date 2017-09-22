@@ -9,7 +9,7 @@ using DapperExtensions.Sql;
 
 namespace CurrencyConversion.WebApp.DataAccess
 {
-    public class BaseDao
+    public class BaseDao : IDao
     {
         protected readonly string DbFilePath;
 

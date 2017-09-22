@@ -15,10 +15,6 @@ namespace CurrencyConversion.WebApp.Controllers
             this.currencyDao = currencyDao;
         }
 
-        public CurrencyController() : this(new CurrencyDao())
-        {
-        }
-
         [Route("")]
         public IEnumerable<CurrencyDto> GetCurrency() =>
             currencyDao.GetCurrency();
