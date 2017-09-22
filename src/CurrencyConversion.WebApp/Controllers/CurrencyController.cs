@@ -1,6 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Web.Http;
+using CurrencyConversion.WebApp.DataAccess;
 using CurrencyConversion.WebApp.Dto;
 
 namespace CurrencyConversion.WebApp.Controllers
@@ -8,29 +8,23 @@ namespace CurrencyConversion.WebApp.Controllers
     [RoutePrefix("api/currency")]
     public class CurrencyController : ApiController
     {
-        private readonly CurrencyDto[] currency =
+        private readonly CurrencyDao currencyDao;
+
+        public CurrencyController(CurrencyDao currencyDao)
         {
-            new CurrencyDto {Id = 1, Name = "RUB"},
-            new CurrencyDto {Id = 2, Name = "USD"},
-            new CurrencyDto {Id = 3, Name = "EUR"}
-        };
+            this.currencyDao = currencyDao;
+        }
+
+        public CurrencyController() : this(new CurrencyDao())
+        {
+        }
 
         [Route("")]
-        public IEnumerable<CurrencyDto> Get()
-        {
-            return currency;
-        }
+        public IEnumerable<CurrencyDto> GetCurrency() =>
+            currencyDao.GetCurrency();
 
-        [Route("{currencyFromId}/to/{currencyToId}/of/{moneyAmount}")]
-        public ExchangeRateDto Get(int currencyFromId, int currencyToId, decimal moneyAmount)
-        {
-            return new ExchangeRateDto
-            {
-                CurrencyFrom = currency[currencyFromId - 1],
-                CurrencyTo = currency[currencyToId - 1],
-                MoneyAmount = moneyAmount,
-                ExchangeRate = new Random().Next(1, 100)
-            };
-        }
+        [Route("{currencyFromId}/to/{currencyToId}/amount/{moneyAmount}")]
+        public ExchangeRateDto Get(int currencyFromId, int currencyToId, decimal moneyAmount) =>
+            currencyDao.GetExchangeRate(currencyFromId, currencyToId, moneyAmount);
     }
 }

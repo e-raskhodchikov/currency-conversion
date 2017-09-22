@@ -20,8 +20,8 @@
                     self.currencies = response.data;
                 });
 
-                // todo separate
                 self.converted = null;
+                self.error = null;
 
                 self.swapCurrencies = function() {
                     var selectedCurrencyTo = self.selectedCurrencyTo;
@@ -29,17 +29,30 @@
                     self.selectedCurrencyFrom = selectedCurrencyTo;
                 };
 
-                self.convert = function() {
+                self.convert = function () {
+                    self.converted = {
+                        moneyAmount: self.moneyAmount,
+                        currencyFrom: self.selectedCurrencyFrom,
+                        currencyTo: self.selectedCurrencyTo
+                    };
+
                     $http({
                         method: 'GET',
                         url: 'api/currency/' +
                             self.selectedCurrencyFrom.id +
                             '/to/' +
                             self.selectedCurrencyTo.id +
-                            '/of/' +
+                            '/amount/' +
                             self.moneyAmount
                     }).then(function (response) {
-                        self.converted = response.data;
+                        self.error = null;
+
+                        self.converted.exchangeRate = response.data.exchangeRate;
+                        self.converted.date = response.data.date;
+                    }, function() {
+                        self.error = {
+                            message: 'An error occurred. Please try again.'
+                        };
                     });
                 };
             }
