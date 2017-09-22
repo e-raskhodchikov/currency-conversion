@@ -1,0 +1,45 @@
+﻿@{
+    ViewBag.Title = "Currency Conversion - Tests";
+}
+
+@Html.ActionLink("Back", "Index")
+
+<h2>Currency Conversion - Tests</h2>
+
+<link type="text/css" rel="stylesheet" href="/Content/jasmine/jasmine.css"/>
+
+<script type="text/javascript" src="/Scripts/jasmine/jasmine.js"></script>
+<script type="text/javascript" src="/Scripts/jasmine/jasmine-html.js"></script>
+<script type="text/javascript" src="/Scripts/jasmine/boot.js"></script>
+
+<script type="text/javascript" src="/Scripts/angular.js"></script>
+<script type="text/javascript" src="/Scripts/angular-mocks.js"></script>
+
+<script type="text/javascript" src="/webapp/js/controllers/conversion/controller.js"></script>
+
+<script type="text/javascript">
+    describe('Conversion controller', function() {
+        beforeEach(module('CurrencyConversion'));
+
+        var $controller, $scope = null, controller, httpBackend;
+
+        beforeEach(inject(function(_$controller_) {
+            $controller = _$controller_;
+        }));
+
+        beforeEach(inject(function ($rootScope, $httpBackend) {
+            $scope = $rootScope.$new();
+            httpBackend = $httpBackend;
+            controller = $controller('ConversionController', { $scope: $scope });
+        }));
+
+        it('should swap currencies', function() {
+            controller.selectedCurrencyFrom = 1;
+            controller.selectedCurrencyTo = 2;
+            controller.swapCurrencies();
+
+            expect(controller.selectedCurrencyFrom).toBe(2);
+            expect(controller.selectedCurrencyTo).toEqual(1);
+        });
+    });
+</script>

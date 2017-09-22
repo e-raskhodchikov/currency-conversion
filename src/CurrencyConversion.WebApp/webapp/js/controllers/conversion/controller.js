@@ -13,13 +13,6 @@
                 self.selectedCurrencyFrom = null;
                 self.selectedCurrencyTo = null;
 
-                $http({
-                    method: 'GET',
-                    url: 'api/currency'
-                }).then(function(response) {
-                    self.currencies = response.data;
-                });
-
                 self.converted = null;
                 self.error = null;
 
@@ -55,6 +48,17 @@
                         };
                     });
                 };
+
+                self.initCurrencies = function() {
+                    $http({
+                        method: 'GET',
+                        url: 'api/currency'
+                    }).then(function(response) {
+                        self.currencies = response.data;
+                    });
+                };
+
+                self.initCurrencies();
             }
         ]);
 })();
